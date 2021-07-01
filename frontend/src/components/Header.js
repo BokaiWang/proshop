@@ -14,13 +14,13 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
-                <Nav.Link href="/cart">
+                <Nav.Link>
                   <i className="fas fa-shopping-cart" /> Cart
                 </Nav.Link>
               </LinkContainer>
 
               <LinkContainer to="/login">
-                <Nav.Link href="/login">
+                <Nav.Link>
                   <i className="fas fa-user" />
                   Sign In
                 </Nav.Link>
