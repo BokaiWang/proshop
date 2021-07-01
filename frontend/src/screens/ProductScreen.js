@@ -14,6 +14,7 @@ import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../actions/productActions";
+import { addToCart } from "../actions/cartActions";
 
 const ProductScreen = ({ match, history }) => {
   const [qty, setQty] = useState(1);
@@ -28,7 +29,8 @@ const ProductScreen = ({ match, history }) => {
   }, [dispatch, match]);
 
   const addToCartHandler = () => {
-    history.push(`/cart/${match.params.id}?qty=${qty}`);
+    dispatch(addToCart(product._id, qty));
+    history.push(`/cart`);
   };
 
   return (
