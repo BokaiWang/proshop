@@ -13,7 +13,7 @@ const orderSchema = mongoose.Schema(
         qty: { type: Number, required: true },
         image: { type: String, required: true },
         price: { type: Number, required: true },
-        prodcut: {
+        product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
           ref: "Product",
@@ -66,19 +66,6 @@ const orderSchema = mongoose.Schema(
     },
     deliveredAt: {
       type: Date,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
     },
     // Set default value to false, so when users register, they are definitely not admins
     isAdmin: {
