@@ -36,10 +36,13 @@ const PlaceOrderScreen = ({ history }) => {
 
   useEffect(() => {
     if (success) {
-      history.push(`/order/${order._id}`);
+      history.push(`/orders/${order._id}`);
     }
+    // eslint-disable-next-line
   }, [history, success]);
 
+  // We don't direct the user to the next screen when he click the button
+  // because it's possible that he fails to place an order
   const placeOrderHandler = () => {
     dispatch(
       createOrder({
