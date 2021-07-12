@@ -96,7 +96,7 @@ const ProductScreen = ({ match, history }) => {
                           as="select"
                           value={qty}
                           onChange={(e) => {
-                            return setQty(e.target.value);
+                            return setQty(Number(e.target.value));
                           }}
                         >
                           {[...Array(product.countInStock).keys()].map((x) => {
