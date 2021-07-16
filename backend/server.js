@@ -1,4 +1,5 @@
 import path from "path";
+import morgan from "morgan";
 import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
@@ -13,6 +14,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 // Allow us to accept json data in the body of the req/res
 app.use(express.json());
