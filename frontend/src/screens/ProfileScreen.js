@@ -41,10 +41,10 @@ const ProfileScreen = ({ history }) => {
     if (!userInfo) {
       history.push("/login");
     } else {
-      if (!user || !user.name || success) {
+      if (!user || !user.name || success || user._id !== userInfo._id) {
         dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(listMyOrders());
-        dispatch(getUserDetails("profile"));
+        dispatch(getUserDetails(userInfo._id));
       } else {
         setName(user.name);
         setEmail(user.email);
