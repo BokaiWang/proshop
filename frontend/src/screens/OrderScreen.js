@@ -15,6 +15,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from "../constants/orderConstants";
+import { CART_RESET } from "../constants/cartConstants";
 
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id;
@@ -61,6 +62,10 @@ const OrderScreen = ({ match, history }) => {
       };
       document.body.appendChild(script);
     };
+
+    if (successPay) {
+      dispatch({ type: CART_RESET });
+    }
 
     if (!order || successPay || order._id !== orderId || successDeliver) {
       dispatch({ type: ORDER_PAY_RESET });
