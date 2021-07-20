@@ -120,7 +120,7 @@ const ProductListScreen = ({ history, match }) => {
                         variant="danger"
                         className="btn-sm"
                         onClick={() => {
-                          return deleteHandler(product._id);
+                          deleteHandler(product._id);
                         }}
                       >
                         <i className="fas fa-trash" />

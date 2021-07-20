@@ -5,7 +5,11 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listProductDetails, updateProduct } from "../actions/productActions";
+import {
+  deleteProduct,
+  listProductDetails,
+  updateProduct,
+} from "../actions/productActions";
 import FormContainer from "../components/FormContainer";
 import { PRODUCT_UPDATE_RESET } from "../constants/productConstants";
 
@@ -87,6 +91,11 @@ const ProductEditScreen = ({ match, history }) => {
       console.log(error);
       setUploading(false);
     }
+  };
+
+  const cancelHandler = (id) => {
+    dispatch(deleteProduct(id));
+    history.push("/admin/productlist");
   };
 
   return (
@@ -196,7 +205,17 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Button type="submit" variant="primary">
-              Update
+              Confirm
+            </Button>
+            <Button
+              type="submit"
+              variant="danger"
+              className="float-right"
+              onClick={() => {
+                cancelHandler(productId);
+              }}
+            >
+              Cancel
             </Button>
           </Form>
         )}
